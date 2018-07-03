@@ -1,0 +1,13 @@
+app_admin_user:
+    resource: |
+        alias: sylius.admin_user
+        section: admin
+        except: ['show']
+        redirect: index
+        grid: app_admin_user
+        vars:
+            all:
+                subheader: sylius.ui.manage_users # define a translation key for your entity subheader
+            index:
+                icon: 'file image outline' # choose an icon that will be displayed next to the subheader
+    type: sylius.resource

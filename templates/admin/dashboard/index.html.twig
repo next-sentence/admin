@@ -1,0 +1,13 @@
+{% extends 'admin/layout/sidebar.html.twig' %}
+
+{% block title %}Hello {{ controller_name }}!{% endblock %}
+
+{% block content %}
+    {% import 'SyliusUiBundle:Macro:headers.html.twig' as headers %}
+
+    <div class="ui stackable grid">
+        <div class="twelve wide column">
+            {{ headers.default('sylius.ui.dashboard'|trans, 'home', 'sylius.ui.overview_of_your_store'|trans) }}
+        </div>
+    </div>
+{% endblock %}

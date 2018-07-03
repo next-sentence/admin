@@ -1,0 +1,53 @@
+{% extends '@SyliusUi/Layout/sidebar.html.twig' %}
+
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/vendor.css') }}" />
+{% endblock %}
+
+{% block topbar %}
+    <a class="icon item" id="sidebar-toggle" title="{{ 'sylius.ui.toggle_sidebar'|trans }}">
+        <i class="sidebar icon"></i>
+    </a>
+
+    <div class="item">
+        <form method="get" action="{{ path('app_admin_index') }}">
+            <div class="ui inverted transparent icon input">
+                <input type="text" name="criteria[search][value]" placeholder="{{ 'sylius.ui.search'|trans }}...">
+                <i class="search link icon"></i>
+            </div>
+        </form>
+    </div>
+
+    <div class="ui left floated dividing empty item"></div>
+
+    <div class="ui right floated dividing empty item"></div>
+
+    {#{{ sylius_render_notifications_widget() }}#}
+
+    <div class="ui floated simple dropdown item">
+        {{ app.user.firstName|default(app.user.email) }}
+        <i class="dropdown icon"></i>
+        <div class="menu">
+            <a href="{{ path('sylius_admin_admin_user_update', {'id': app.user.id}) }}" class="item">
+                <i class="user icon"></i>
+                {{ 'sylius.ui.my_account'|trans }}
+            </a>
+            <a href="{{ path('app_admin_logout') }}" id="sylius-logout-button" class="item">
+                <i class="sign out icon"></i>
+                {{ 'sylius.ui.logout'|trans }}
+            </a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+    <a class="item" href="{{ path('app_admin_dashboard') }}"><b>Admin</b></a>
+    {{ knp_menu_render('admin_sidebar', {'template': 'SyliusUiBundle:Menu:sidebar.html.twig', 'currentClass': 'active'}) }}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('build/manifest.js') }}"></script>
+    <script src="{{ asset('build/vendor.js') }}"></script>
+
+{% endblock %}

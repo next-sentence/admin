@@ -1,0 +1,26 @@
+parameters:
+    #parameter_name: value
+
+imports:
+    - { resource: './fixtures/default.yaml' }
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        public: false       # Allows optimizing the container by removing unused services; this also means
+                            # fetching services directly from the container via $container->get() won't work.
+                            # The best practice is to be explicit about your dependencies anyway.
+
+## factories
+    App\Fixture\Factory\UserExampleFactory:
+        arguments: ["@sylius.factory.admin_user"]
+
+## fixtures
+    App\Fixture\UserFixture:
+        arguments:
+            $objectManager: "@sylius.manager.admin_user"
+            $exampleFactory: '@App\Fixture\Factory\UserExampleFactory'
+        tags:
+            - { name: sylius_fixtures.fixture, priority: 64}

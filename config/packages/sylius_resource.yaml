@@ -1,0 +1,8 @@
+sylius_resource:
+    settings:
+        paginate: 10
+        limit: 10
+        allowed_paginate: true
+        default_page_size: 10
+
+    resources: ~

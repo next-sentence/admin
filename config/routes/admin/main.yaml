@@ -1,0 +1,10 @@
+app_admin_index:
+    path: /
+    defaults:
+        _controller: 'FrameworkBundle:Redirect:redirect'
+        route: app_admin_dashboard
+        permanent: true
+
+app_admin_dashboard:
+    path: /dashboard
+    defaults: { _controller: 'App\Controller\Admin\DashboardController::indexAction' }

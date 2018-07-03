@@ -1,0 +1,21 @@
+sylius_user:
+    driver: doctrine/orm
+    resources:
+        admin:
+            user:
+                classes:
+                    model: App\Entity\User
+                    form: App\Form\Type\UserType
+                    repository: Sylius\Bundle\UserBundle\Doctrine\ORM\UserRepository
+                templates: admin/crud
+
+
+        oauth:
+            user:
+                classes:
+                    model: Sylius\Component\User\Model\UserOAuth
+                    interface: Sylius\Component\User\Model\UserOAuthInterface
+                    controller: Sylius\Bundle\ResourceBundle\Controller\ResourceController
+                    factory: Sylius\Component\Resource\Factory\Factory
+                    form: Sylius\Bundle\UserBundle\Form\Type\UserType
+#                templates: 'SyliusUserBundle:User'

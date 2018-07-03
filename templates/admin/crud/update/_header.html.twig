@@ -1,0 +1,11 @@
+<div class="ui stackable two column grid">
+    <div class="column">
+        {% include configuration.vars.templates.header_title|default('admin/crud/update/_headerTitle.html.twig') %}
+        {% include configuration.vars.templates.breadcrumb|default('admin/crud/update/_breadcrumb.html.twig') %}
+
+        {{ sonata_block_render_event(event_prefix ~ '.header', {'resource': resource}) }}
+    </div>
+    <div class="middle aligned column">
+        {% include configuration.vars.templates.toolbar|default('admin/crud/_toolbar.html.twig') ignore missing %}
+    </div>
+</div>

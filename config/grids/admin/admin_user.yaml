@@ -1,0 +1,57 @@
+sylius_grid:
+    grids:
+        app_admin_user:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: App\Entity\User
+            sorting:
+                createdAt: desc
+            limits: [10,20,50]
+
+            fields:
+                firstName:
+                    type: string
+                    label: sylius.ui.first_name
+                    sortable: ~
+                lastName:
+                    type: string
+                    label: sylius.ui.last_name
+                    sortable: ~
+                email:
+                    type: string
+                    label: sylius.ui.email
+                    sortable: ~
+                createdAt:
+                    type: datetime
+                    label: sylius.ui.registration_date
+                    sortable: ~
+                    options:
+                        format: d-m-Y H:i
+                enabled:
+                    type: twig
+                    label: sylius.ui.enabled
+                    sortable: ~
+                    options:
+                        template: "@SyliusUi/Grid/Field/enabled.html.twig"
+#            filters:
+#                search:
+#                    type: string
+#                    label: sylius.ui.search
+#                    options:
+#                        fields: [email, username, name]
+#                enabled:
+#                    type: boolean
+#                    label: sylius.ui.enabled
+            actions:
+#                bulk:
+#                    delete:
+#                        type: delete
+                main:
+                    create:
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete

@@ -1,0 +1,17 @@
+parameters:
+    #parameter_name: value
+
+services:
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        public: false
+
+    _instanceof:
+        Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType:
+            autowire: false
+
+    App\Form\Type\UserType:
+        arguments: ["%sylius.model.admin_user.class%", ["sylius", "sylius_user_create"]]
+        tags:
+            - { name: form.type, alias: sylius_admin_user }

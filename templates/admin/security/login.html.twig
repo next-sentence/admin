@@ -1,0 +1,5 @@
+{% extends 'admin/layout/centered.html.twig' %}
+
+{% block content %}
+    {% include 'admin/security/_login.html.twig' with {'action': path('app_admin_login_check')} %}
+{% endblock %}

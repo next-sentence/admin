@@ -1,0 +1,5 @@
+sylius_mailer:
+    sender:
+        name: Admin
+        address: admin@example.com
+    emails: ~

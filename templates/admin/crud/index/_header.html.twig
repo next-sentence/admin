@@ -1,0 +1,10 @@
+<div class="ui stackable two column grid">
+    <div class="column">
+        {% include configuration.vars.templates.header_title|default('admin/crud/index/_headerTitle.html.twig') %}
+        {% include configuration.vars.templates.breadcrumb|default('admin/crud/index/_breadcrumb.html.twig') %}
+
+        {{ sonata_block_render_event(event_prefix ~ '.header', {'resources': resources}) }}
+    </div>
+
+    {% include 'admin/crud/index/_actions.html.twig' %}
+</div>
